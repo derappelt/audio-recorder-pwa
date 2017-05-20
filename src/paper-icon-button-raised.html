@@ -1,4 +1,6 @@
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
+
 
 
 <dom-module id="paper-icon-button-raised">
@@ -7,15 +9,21 @@
       :host {
         display: inline-block;
       }
-      paper-icon-button{
+      .main{
         background-color: #fff;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
                     0 1px 5px 0 rgba(0, 0, 0, 0.12),
                     0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     </style>
-    
-    <paper-icon-button style$="width: [[size]]px; height: [[size]]px; border-radius: [[size]]px;" icon="[[icon]]"></paper-icon-button>
+    <div class="main" style$="width: [[size]]px; height: [[size]]px; border-radius: [[size]]px;">
+      <iron-icon style$="--iron-icon-width: [[iconsize]]px; --iron-icon-height: [[iconsize]]px;" icon="[[icon]]"></iron-icon>
+      <paper-ripple></paper-ripple>
+    </div>
     
   </template>
 
@@ -31,8 +39,15 @@
           size: {
             type: Number,
             value: 40
+          },
+          iconsize: {
+            type: Number,
+            computed: "_computeIconSize(size)"
           }
         };
+      }
+      _computeIconSize(size){
+        return size/2.25;
       }
     }
 

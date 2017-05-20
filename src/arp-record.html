@@ -8,19 +8,48 @@
   <template>
     <style>
       :host {
+        width: 100%;
         display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+      .time{
+        text-align: center;
+        font-size: 48px;
+        font-weight: lighter;
+      }
+      .inactive{
+        color: #cccccc;
+      }
+      .recbuttons{
+        display: flex;
+        align-items: flex-end;
         justify-content: center;
-        align-items: center;
+      }
+      .btn_rec{
+        color: #f44336;
       }
     </style>
-    <paper-icon-button-raised size="370" icon="av:fiber-manual-record"></paper-icon-button-raised>
-    <paper-icon-button-raised size="195" icon="av:stop"></paper-icon-button-raised>
+    <div class="time inactive">[[timeString]]</div>
+    <div class="recbuttons">
+      <paper-icon-button-raised id="btnRec" class="btn_rec" size="150" icon="av:fiber-manual-record"></paper-icon-button-raised>
+      <paper-icon-button-raised id="btnStop" class="btn_stop inactive" size="75" icon="av:stop"></paper-icon-button-raised>
+    </div>
+    <div class="footer"></div>
     
   </template>
 
   <script>
     class ArpRecord extends Polymer.Element {
       static get is() { return 'arp-record'; }
+      static get properties() {
+        return {
+          timeString: {
+            type: String,
+            value: '00:00:00'
+          }
+        }
+      }
     }
 
     window.customElements.define(ArpRecord.is, ArpRecord);
