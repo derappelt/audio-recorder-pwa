@@ -18,7 +18,7 @@
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": "/",
+  "start_url": "/audio-recorder-pwa/",
   "background_color": "#ecf0f1",
   "display": "standalone",
   "theme_color": "#F44336"
